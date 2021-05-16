@@ -7,10 +7,13 @@ const mongoose = require('mongoose'),
 const schema = new mongoose.Schema(
   {
     username: { type: String, index: true, required: true, unique: true, uniqueCaseInsensitive: false },
+    cash: { type: Number, required: true },
     password: { type: String, index: true },
     email: { type: String },
-    age: { type: Number },
-    birthday: { type: Date },
+    role: { type: String,
+            required: true }
+    // age: { type: Number },
+    // birthday: { type: Date },
   },
   { timestamps: true }
 )
@@ -22,13 +25,14 @@ schema.plugin(uniqueValidator)
 schema.methods.generateJWT = function (obj) {
   let today = new Date(),
     exp = new Date(today)
-  // exp.setDate(today.getDate() + config.token_exp_days || 1);
-  exp.setMinutes(today.getMinutes() + 30)
+  exp.setDate(today.getDate() + config.token_exp_days || 1);
+  // exp.setMinutes(today.getMinutes() + 30)
 
   return jwt.sign(
     {
       id: this._id,
       username: this.username,
+      role: this.role,
       exp: parseInt(exp.getTime() / 1000),
     },
     config.secret
@@ -42,6 +46,8 @@ schema.methods.toJSON = function () {
     username: this.username,
     email: this.email,
     age: this.age,
+    cash: this.cash,
+    role: this.role,
     photoURL:
       this.image ||
       'https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png',

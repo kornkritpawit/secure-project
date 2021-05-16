@@ -3,9 +3,12 @@ const mongoose = require('mongoose'),
 
 const schema = new mongoose.Schema(
   {
-    title: { type: String },
+    Name: { type: String },
     description: { type: String },
-    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    price: { type: Number },
+    available: { type: Number }
+
+    // author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   },
   { timestamps: true }
 )
@@ -17,9 +20,11 @@ schema.plugin(uniqueValidator, { status: 400 })
 schema.methods.toJSON = function () {
   return {
     id: this._id,
-    title: this.title,
+    Name: this.title,
     description: this.description,
-    author: this.author,
+    // author: this.author,
+    price: this.price,
+    available: this.available,
     createdAt: this.createdAt,
     updatedAt: this.updatedAt,
   }
@@ -30,4 +35,4 @@ schema.pre('save', function (next) {
   next()
 })
 
-module.exports = mongoose.model('Post', schema)
+module.exports = mongoose.model('Product', schema)

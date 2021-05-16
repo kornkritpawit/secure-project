@@ -1,6 +1,6 @@
-const Post = require('../models/Post'),
+const Product = require('../models/Product'),
   config = require('../configs/app'),
-  { ErrorBadRequest, ErrorNotFound } = require('../configs/errorMethods')
+  { ErrorBadRequest, ErrorNotFound, ErrorForbidden } = require('../configs/errorMethods')
 
 const methods = {
   scopeSearch(req) {
@@ -22,8 +22,8 @@ const methods = {
     return new Promise(async (resolve, reject) => {
       try {
         Promise.all([
-          Post.find(_q.query).sort(_q.sort).limit(limit).skip(offset).populate('author'),
-          Post.countDocuments(_q.query),
+          Product.find(_q.query).sort(_q.sort).limit(limit).skip(offset).populate('author'),
+          Product.countDocuments(_q.query),
         ])
           .then((result) => {
             const rows = result[0],
@@ -44,10 +44,21 @@ const methods = {
     })
   },
 
+  BuyProduct(id, req) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        obj = await Product.findById(id)
+        user = await User.findById(req.user.id)
+        if (!obj) reject(ErrorNotFound('id: not found'))
+        
+      }
+    })
+  },
+
   findById(id) {
     return new Promise(async (resolve, reject) => {
       try {
-        const obj = await Post.findById(id).populate('author')
+        const obj = await Product.findById(id).populate('author')
         if (!obj) reject(ErrorNotFound('id: not found'))
         resolve(obj.toJSON())
       } catch (error) {
@@ -59,7 +70,7 @@ const methods = {
   insert(data) {
     return new Promise(async (resolve, reject) => {
       try {
-        const obj = new Post(data)
+        const obj = new Product(data)
         const inserted = await obj.save()
         resolve(inserted)
       } catch (error) {
@@ -71,9 +82,9 @@ const methods = {
   update(id, data) {
     return new Promise(async (resolve, reject) => {
       try {
-        const obj = await Post.findById(id)
+        const obj = await Product.findById(id)
         if (!obj) reject(ErrorNotFound('id: not found'))
-        await Post.updateOne({ _id: id }, data)
+        await Product.updateOne({ _id: id }, data)
         resolve(Object.assign(obj, data))
       } catch (error) {
         reject(error)
@@ -84,9 +95,9 @@ const methods = {
   delete(id) {
     return new Promise(async (resolve, reject) => {
       try {
-        const obj = await Post.findById(id)
+        const obj = await Product.findById(id)
         if (!obj) reject(ErrorNotFound('id: not found'))
-        await Post.deleteOne({ _id: id })
+        await Product.deleteOne({ _id: id })
         resolve()
       } catch (error) {
         reject(error)

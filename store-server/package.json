@@ -1,7 +1,7 @@
 {
-  "name": "express-template",
+  "name": "store-server",
   "version": "1.0.0",
-  "description": "RESTFul API with express on node",
+  "description": "store server of secure project",
   "main": "index.js",
   "dependencies": {
     "cors": "^2.8.5",
@@ -20,7 +20,7 @@
     "winston": "^3.3.3"
   },
   "scripts": {
-    "dev": "nodemon .",
-    "start": "NODE_ENV=production node ."
+    "start": "nodemon .",
+    "prod": "NODE_ENV=production node ."
   }
 }

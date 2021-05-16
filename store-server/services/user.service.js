@@ -58,6 +58,7 @@ const methods = {
   insert(data) {
     return new Promise(async (resolve, reject) => {
       try {
+        console.log(data)
         const obj = new User(data)
         const inserted = await obj.save()
         resolve(inserted)
@@ -116,6 +117,7 @@ const methods = {
     return new Promise(async (resolve, reject) => {
       try {
         const decoded = jwt.decode(accessToken)
+        console.log(decoded)
         const obj = await User.findOne({ username: decoded.username })
         if (!obj) {
           reject(ErrorUnauthorized('username not found'))

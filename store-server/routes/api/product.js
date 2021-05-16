@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const controllers = require('../../controllers/post.controller')
+const controllers = require('../../controllers/product.controller')
 
 router.get('/', controllers.onGetAll)
 router.get('/:id', controllers.onGetById)
