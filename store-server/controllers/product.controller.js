@@ -47,6 +47,16 @@ const methods = {
     }
   },
 
+  async onBuyProduct(req, res) {
+    // console.log(req.user)
+  try {
+    result = await Service.buyProduct(req.params.id, req.user, req.body)
+    res.success(result)
+  } catch (error) {
+    res.error(error)
+  }
+  },
+
   async onDelete(req, res) {
     if (req.user.role === 'admin') {
       try {

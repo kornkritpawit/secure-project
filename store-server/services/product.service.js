@@ -1,4 +1,5 @@
 const Product = require('../models/Product'),
+  User = require('../models/User'),
   config = require('../configs/app'),
   { ErrorBadRequest, ErrorNotFound, ErrorForbidden } = require('../configs/errorMethods')
 
@@ -44,13 +45,25 @@ const methods = {
     })
   },
 
-  BuyProduct(id, req) {
+  
+
+  buyProduct(id, user, bill) {
     return new Promise(async (resolve, reject) => {
+      // console.log(id)
+      console.log(user)
       try {
         obj = await Product.findById(id)
-        user = await User.findById(req.user.id)
+        user = await User.findById(user.id)
+        console.log(user)
+        obj.available = obj.available - bill.number
+        user.cash -= bill.number * obj.price
         if (!obj) reject(ErrorNotFound('id: not found'))
-        
+        await Product.updateOne({_id: id}, obj)
+        await User.updateOne({_id: user.id}, user)
+        console.log(user, obj)
+        resolve("Buy Successfully")
+      } catch (error) {
+        reject(ErrorNotFound('id: not found'))
       }
     })
   },
@@ -58,7 +71,7 @@ const methods = {
   findById(id) {
     return new Promise(async (resolve, reject) => {
       try {
-        const obj = await Product.findById(id).populate('author')
+        const obj = await Product.findById(id)
         if (!obj) reject(ErrorNotFound('id: not found'))
         resolve(obj.toJSON())
       } catch (error) {
