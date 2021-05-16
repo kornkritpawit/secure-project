@@ -8,7 +8,7 @@ module.exports = async (app) => {
   require('../configs/databases')
 
   // CORS
-  const allowedOrigins = []
+  const allowedOrigins = ['http://localhost:3000']
   const corsOptions = {
     origin: function (origin, callback) {
       if (!origin) return callback(null, true)

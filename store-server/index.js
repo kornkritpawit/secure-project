@@ -17,6 +17,5 @@ require('./configs/errorHandler')(config.isProduction, app)
 // Start Server
 const server = app.listen( config.port, () => {
   let port = server.address().port
-  console.log(host)
   console.log(`Server is running at http://localhost:${port}`)
 })

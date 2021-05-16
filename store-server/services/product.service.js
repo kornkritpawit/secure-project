@@ -19,6 +19,7 @@ const methods = {
     const limit = +(req.query.size || config.pageLimit)
     const offset = +(limit * ((req.query.page || 1) - 1))
     const _q = methods.scopeSearch(req)
+    console.log(_q)
 
     return new Promise(async (resolve, reject) => {
       try {
@@ -45,7 +46,6 @@ const methods = {
     })
   },
 
-  
 
   buyProduct(id, user, bill) {
     return new Promise(async (resolve, reject) => {
