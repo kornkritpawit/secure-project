@@ -1,2 +1,7 @@
+node_modules
+build
+npm-debug.log
 .DS_Store
-*.zip
+log
+
+.env.secret
