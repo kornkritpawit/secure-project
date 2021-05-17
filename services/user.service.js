@@ -55,6 +55,19 @@ const methods = {
     })
   },
 
+  me(user) {
+    console.log(user)
+    return new Promise(async (resolve, reject) => {
+      try {
+        const obj = await User.findById(user.id)
+        if (!obj) reject(ErrorNotFound('id: not found'))
+        resolve(obj.toJSON())
+      } catch (error) {
+        reject(ErrorBadRequest(error.message))
+      }
+    })
+  },
+
   insert(data) {
     return new Promise(async (resolve, reject) => {
       try {
@@ -69,6 +82,8 @@ const methods = {
   },
 
   update(id, data) {
+    if (data.role) delete data.role
+    if (data.username) delete data.username
     return new Promise(async (resolve, reject) => {
       console.log(data)
       try {
