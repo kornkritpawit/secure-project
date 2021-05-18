@@ -8,8 +8,7 @@ const getTokenFromHeader = (req) => {
   //   return req.headers.authorization.split(' ')[1];
   // }
   // return null;
-  console.log(req.cookies.accessToken)
-  console.log(req.cookies)
+
   if (req.cookies.accessToken) {
     return req.cookies.accessToken
   } return null

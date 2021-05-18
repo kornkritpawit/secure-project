@@ -1,5 +1,6 @@
 const express = require('express'),
   morgan = require('morgan'),
+  bodyParser = require('body-parser'),
   cors = require('cors')
 ;(passport = require('passport')), (path = require('path'))
 
@@ -27,7 +28,7 @@ module.exports = async (app) => {
   // Parser Body
   app.use(express.json())
   app.use(cookieParser())
-  app.use(express.urlencoded({ extended: false }))
+  // app.use(express.urlencoded({ extended: false }))
 
   // Logger
   app.use(morgan('dev'))

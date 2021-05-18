@@ -2,8 +2,8 @@ const Service = require('../services/user.service');
 
 const methods = {
   async onGetAll(req, res) {
+    console.log(req.user)
     if (req.user.role === 'admin') {
-
     try {
       let result = await Service.find(req);
       res.success(result);
@@ -51,7 +51,7 @@ const methods = {
   },
 
   async me(req, res) {
-    console.log(req)
+    // console.log(req)
     try {
       const result = await Service.me(req.user)
       res.success(result)

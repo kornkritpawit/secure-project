@@ -47,7 +47,6 @@ const methods = {
   },
 
   async onBuyProduct(req, res) {
-    // console.log(req.user)
   try {
     result = await Service.buyProduct(req.params.id, req.user, req.body)
     res.success(result)

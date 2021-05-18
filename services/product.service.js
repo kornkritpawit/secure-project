@@ -50,6 +50,7 @@ const methods = {
     return new Promise(async (resolve, reject) => {
       try {
         obj = await Product.findById(id)
+        console.log(obj)
         user = await User.findById(user.id)
         obj.available = obj.available - bill.number
         user.cash -= bill.number * obj.price
