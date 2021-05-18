@@ -4,6 +4,7 @@ const express = require('express'),
   cors = require('cors')
 ;(passport = require('passport')), (path = require('path'))
 
+const csurf = require('csurf');
 const cookieParser = require('cookie-parser')
 
 module.exports = async (app) => {

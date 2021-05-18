@@ -62,6 +62,16 @@ const methods = {
     }
   },
 
+  logout(req, res) {
+    console.log(req.cookies)
+    if (req.cookies.accessToken) {
+      res.clearCookie('accessToken')
+      res.success("logout successfully")
+    } else {
+      res.success('You have already logout')
+    }
+  },
+
   async onDelete(req, res) {
     if (req.user.role === 'admin') {
     try {
@@ -88,9 +98,6 @@ const methods = {
   },
 
   async onRegister(req, res) {
-    if (req.body.password) {
-
-    }
     try {
       let result = await Service.insert(req.body);
       res.success(result, 201);

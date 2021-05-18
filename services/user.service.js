@@ -172,6 +172,10 @@ const methods = {
     });
   },
 
+  logout(req) {
+    
+  },
+
   refreshToken(accessToken) {
     return new Promise(async (resolve, reject) => {
       try {

@@ -5,6 +5,7 @@ const validator = require('../../validators')
 
 router.get('/', auth.required, controllers.onGetAll)
 router.get('/me', auth.required, controllers.me)
+router.get('/logout', controllers.logout)
 router.get('/:id', auth.required, controllers.onGetById)
 router.post('/', auth.required, controllers.onInsert)
 router.put('/:id', auth.required, controllers.onUpdate)
