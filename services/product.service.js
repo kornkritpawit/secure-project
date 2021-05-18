@@ -97,6 +97,9 @@ const methods = {
       try {
         const obj = await Product.findById(id)
         if (!obj) reject(ErrorNotFound('id: not found'))
+        if (data.add) {
+          data.available = obj.available + data.add
+        }
         await Product.updateOne({ _id: id }, data)
         resolve(Object.assign(obj, data))
       } catch (error) {

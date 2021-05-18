@@ -83,6 +83,9 @@ const methods = {
   },
 
   async onRegister(req, res) {
+    if (req.body.password) {
+
+    }
     try {
       let result = await Service.insert(req.body);
       res.success(result, 201);
