@@ -3,7 +3,7 @@ const mongoose = require('mongoose'),
 
 const schema = new mongoose.Schema(
   {
-    Name: { type: String },
+    name: { type: String },
     description: { type: String },
     price: { type: Number },
     available: { type: Number }
@@ -20,7 +20,7 @@ schema.plugin(uniqueValidator, { status: 400 })
 schema.methods.toJSON = function () {
   return {
     id: this._id,
-    Name: this.title,
+    name: this.name,
     description: this.description,
     // author: this.author,
     price: this.price,

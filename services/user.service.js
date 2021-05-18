@@ -71,7 +71,7 @@ const methods = {
   insert(data) {
     return new Promise(async (resolve, reject) => {
       try {
-        console.log(data)
+        // console.log(data)
         const obj = new User(data)
         const inserted = await obj.save()
         resolve(inserted)

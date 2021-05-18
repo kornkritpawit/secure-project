@@ -2,7 +2,8 @@ const mongoose = require('mongoose'),
   uniqueValidator = require('mongoose-unique-validator'),
   crypto = require('crypto'),
   jwt = require('jsonwebtoken'),
-  config = require('../configs/app')
+  config = require('../configs/app'),
+  passwordValidator = require('password-validator')
 
 const schema = new mongoose.Schema(
   {
@@ -17,6 +18,15 @@ const schema = new mongoose.Schema(
   },
   { timestamps: true }
 )
+
+const passwordschema = new passwordValidator()
+
+passwordschema.is().min(8)
+  .is().max(100)
+  .has().uppercase()
+  .has().lowercase()
+  .has().digits(1)
+  .has().not().spaces()
 
 // Apply the uniqueValidator plugin to userSchema.
 schema.plugin(uniqueValidator)
@@ -69,8 +79,14 @@ schema.methods.validPassword = function (password) {
 
 // Custom field before save
 schema.pre('save', function (next) {
-  this.password = this.passwordHash(this.password)
-  next()
+  console.log(this.password)
+  if (!passwordschema.validate(this.password)) {
+    this.invalidate('password', passwordschema.validate(this.password,
+      {list: true}))
+  } else {
+    this.password = this.passwordHash(this.password)
+    next()
+  }
 })
 
 module.exports = mongoose.model('User', schema)
