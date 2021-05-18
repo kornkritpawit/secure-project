@@ -76,7 +76,10 @@ const methods = {
   async onLogin(req, res) {
     try {
       let result = await Service.login(req.body);
-      res.success(result);
+      console.log(result)
+      // res.cookie('user', result, {httpOnly: true});
+      res.cookie('accessToken', result.accessToken, {httpOnly: true});
+      res.success(result.userData);
     } catch (error) {
       res.error(error);
     }

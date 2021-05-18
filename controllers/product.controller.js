@@ -3,7 +3,6 @@ const { ErrorUnauthorized } = require('../configs/errorMethods');
 
 const methods = {
   async onGetAll(req, res) {
-    console.log(req.user);
     try {
       const result = await Service.find(req);
       res.success(result);

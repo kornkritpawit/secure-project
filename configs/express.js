@@ -3,6 +3,8 @@ const express = require('express'),
   cors = require('cors')
 ;(passport = require('passport')), (path = require('path'))
 
+const cookieParser = require('cookie-parser')
+
 module.exports = async (app) => {
   // Connect MongoDB
   require('../configs/databases')
@@ -18,11 +20,13 @@ module.exports = async (app) => {
       }
       return callback(null, true)
     },
+    credentials: true
   }
   app.use(cors(corsOptions))
 
   // Parser Body
   app.use(express.json())
+  app.use(cookieParser())
   app.use(express.urlencoded({ extended: false }))
 
   // Logger

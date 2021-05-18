@@ -19,7 +19,6 @@ const methods = {
     const limit = +(req.query.size || config.pageLimit)
     const offset = +(limit * ((req.query.page || 1) - 1))
     const _q = methods.scopeSearch(req)
-    console.log(_q)
 
     return new Promise(async (resolve, reject) => {
       try {
@@ -49,18 +48,14 @@ const methods = {
 
   buyProduct(id, user, bill) {
     return new Promise(async (resolve, reject) => {
-      // console.log(id)
-      console.log(user)
       try {
         obj = await Product.findById(id)
         user = await User.findById(user.id)
-        console.log(user)
         obj.available = obj.available - bill.number
         user.cash -= bill.number * obj.price
         if (!obj) reject(ErrorNotFound('id: not found'))
         await Product.updateOne({_id: id}, obj)
         await User.updateOne({_id: user.id}, user)
-        console.log(user, obj)
         resolve("Buy Successfully")
       } catch (error) {
         reject(ErrorNotFound('id: not found'))
