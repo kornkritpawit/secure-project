@@ -38,6 +38,8 @@ const methods = {
   },
 
   async onUpdate(req, res) {
+    // console.log(req.body)
+    // console.log(req.user)
     try {
       if (req.params.id === req.user.id) {
         const result = await Service.update(req.params.id, req.body);

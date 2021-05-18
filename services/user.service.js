@@ -125,9 +125,12 @@ const methods = {
     if (data.role) delete data.role;
     if (data.username) delete data.username;
     return new Promise(async (resolve, reject) => {
-      console.log(data);
       try {
         const obj = await User.findById(id);
+        if (data.money) {
+          data.cash = obj.cash + data.money
+        }
+        console.log(data)
         if (!obj) reject(ErrorNotFound('id: not found'));
         await User.updateOne({ _id: id }, data);
         resolve(Object.assign(obj, data));
