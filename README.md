@@ -29,7 +29,7 @@ npm install
 ```
 npm start
 ```
-5. If you want to run the web service application. You can follow this repoitory instruction [frontend_client](https://github.com/KasidisGit/frontend_client).
+5. If you want to run the web service application. You can follow [frontend_client](https://github.com/KasidisGit/frontend_client) repoitory instruction.
 ## Members
 | Student ID | Name |
 |-|-|
