@@ -1,4 +1,4 @@
-# Everything You Need Web Application
+# Everything You Need Backend Services
 
 The application where we can shop for the product. The features that are included in our web application are a shopping page that shows all of our product descriptions, users can add products that they want to buy. We secure the web application by using functionality from the OWASP security specifications.
 
@@ -29,6 +29,7 @@ npm install
 ```
 npm start
 ```
+5. If you want to run the web service application. You can follow this repoitory instruction [frontend_client](https://github.com/KasidisGit/frontend_client)
 ## Members
 | Student ID | Name |
 |-|-|
