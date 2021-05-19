@@ -13,8 +13,8 @@ git clone https://github.com/kornkritpawit/secure-project
 ```
 2. Add `MONGODB_URI` and `SECRET` variables into [.env](.env) file. The variables should look like this.
 ```
-MONGODB_URI = **YOUR_MONGODB_URI**
-SECRET = **YOUR_SECRET_KEY**
+MONGODB_URI = YOUR_MONGODB_URI
+SECRET = YOUR_SECRET_KEY
 
 PORT=9000
 API_VERSION=1
