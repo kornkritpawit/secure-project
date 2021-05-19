@@ -7,18 +7,22 @@
 ## Installation
 
 1. Clone or download this repository to your local machine.
+```
 git clone https://github.com/kornkritpawit/secure-project
-2. Change variable in .env file. The variables should look like this.
-PORT=9000
-API_VERSION=1
-TOKEN_EXP_DAYS=1
-PAGE_LIMIT=15
+```
+2. Change variables in `.env.secret` file to your variables. The variables should look like this.
+```
 MONGODB_URI = YOUR_MONGODB_URI
 SECRET = YOUR_SECRET_KEY
+```
 3. Install dependencies
+```
 npm install
+```
 4. Run Application
+```
 npm start
+```
 ## Members
 | Student ID | Name |
 |-|-|
