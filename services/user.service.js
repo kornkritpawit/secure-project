@@ -124,6 +124,7 @@ const methods = {
   update(id, data) {
     if (data.role) delete data.role;
     if (data.username) delete data.username;
+    if (data.password) delete data.password;
     return new Promise(async (resolve, reject) => {
       try {
         const obj = await User.findById(id);
