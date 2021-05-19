@@ -1,22 +1,30 @@
-## Project Structure of RESTFul API with Express
+# Everything You Need Web Application
 
-Requires [node.js](https://nodejs.org/en/) and [express.js](https://expressjs.com/) to run
+“Everything you need” Web Application is an application where we can shop for the product. The features that are included in our web application are a shopping page that shows all of our product descriptions, users can add products that they want to buy. We secure the web application by using functionality from the OWASP security specifications.
 
-#### Directory Structure
-```
-app.js              # App entry point
-└─── configs        # Configuration related stuff
-└─── controllers    # Controllers for all the endpoints 
-└─── helpers        # Utility function
-└─── models         # Object Models
-└─── public         # Static file
-└─── routes         # Routes for all the endpoints
-└─── services       # Business logic
-```
+## Prerequisite
+- Node.js
+## Installation
 
-#### Start App
-#####  Install dependencies
-`$ yarn install` or  `$ npm install`
-
-#####  Start app
-`$ yarn start` or `$ npm start`
+1. Clone or download this repository to your local machine.
+git clone https://github.com/kornkritpawit/secure-project
+2. Change variable in .env file. The variables should look like this.
+PORT=9000
+API_VERSION=1
+TOKEN_EXP_DAYS=1
+PAGE_LIMIT=15
+MONGODB_URI = YOUR_MONGODB_URI
+SECRET = YOUR_SECRET_KEY
+3. Install dependencies
+npm install
+4. Run Application
+npm start
+## Members
+| Student ID | Name |
+|-|-|
+| 6110545414 | Kritpawit Soongswang |
+| 6110545457 | Jirawadee Sampusri |
+| 6110545635 | Vichyawat Nakarugsa |
+| 6110546003 | Tiranan Emson |
+| 6110546062 | Sukrita Kittipitayakorn |
+| 6110546364 | Kasidis Luangwutiwong |

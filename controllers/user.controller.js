@@ -69,8 +69,7 @@ const methods = {
   logout(req, res) {
     console.log(req.cookies)
     if (req.cookies.accessToken) {
-      res.clearCookie('accessToken')
-      res.clearCookie('_csrf')
+      res.clearCookie('accessToken','_csrf')
       res.success("logout successfully")
     } else {
       res.success('You have already logout')
