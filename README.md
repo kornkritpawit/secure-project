@@ -33,5 +33,5 @@ npm start
 | 6110546062 | Sukrita Kittipitayakorn |
 | 6110546364 | Kasidis Luangwutiwong |
 
-Department of Computer Engineering
+Department of Computer Engineering<br>
 Kasetsart University
