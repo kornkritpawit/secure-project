@@ -11,7 +11,7 @@ The application where we can shop for the product. The features that are include
 ```
 git clone https://github.com/kornkritpawit/secure-project
 ```
-2. Change `MONGODB_URI` and `SECRET` in `.env` file to your variables. The variables should look like this.
+2. Add `MONGODB_URI` and `SECRET` variables into `.env` file. The variables should look like this.
 ```
 MONGODB_URI = YOUR_MONGODB_URI
 SECRET = YOUR_SECRET_KEY
