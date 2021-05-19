@@ -15,6 +15,10 @@ const methods = {
   }
   },
 
+  getCsrf(req, res) {
+    res.success({ csrfToken: req.csrfToken()})
+  },
+
   async onGetById(req, res) {
     if (req.user.role === 'admin') {
       try {
@@ -38,8 +42,8 @@ const methods = {
   },
 
   async onUpdate(req, res) {
-    // console.log(req.body)
-    // console.log(req.user)
+    console.log(req.body)
+    
     try {
       if (req.params.id === req.user.id) {
         const result = await Service.update(req.params.id, req.body);
@@ -66,6 +70,7 @@ const methods = {
     console.log(req.cookies)
     if (req.cookies.accessToken) {
       res.clearCookie('accessToken')
+      res.clearCookie('_csrf')
       res.success("logout successfully")
     } else {
       res.success('You have already logout')
@@ -86,6 +91,7 @@ const methods = {
   },
 
   async onLogin(req, res) {
+    // console.log(req.csrfToken())
     try {
       let result = await Service.login(req.body);
       console.log(result)

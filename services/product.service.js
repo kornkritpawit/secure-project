@@ -89,6 +89,7 @@ const methods = {
   },
 
   update(id, data) {
+    // console.log(data)
     return new Promise(async (resolve, reject) => {
       try {
         const obj = await Product.findById(id)

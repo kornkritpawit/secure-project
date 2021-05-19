@@ -128,7 +128,7 @@ const methods = {
       try {
         const obj = await User.findById(id);
         if (data.money) {
-          data.cash = obj.cash + data.money
+          data.cash = obj.cash + parseInt(data.money)
         }
         console.log(data)
         if (!obj) reject(ErrorNotFound('id: not found'));
@@ -173,7 +173,7 @@ const methods = {
   },
 
   logout(req) {
-    
+
   },
 
   refreshToken(accessToken) {

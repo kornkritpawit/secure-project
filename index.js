@@ -2,11 +2,15 @@ const express = require('express'),
       app = express(),
       config = require('./configs/app')
 
+      const csrf = require('csurf')
+
 // Express Configs
 require('./configs/express')(app)
 
 // Middleware
 require('./configs/middleware')
+
+
 
 // Routes
 app.use(require('./routes'))
